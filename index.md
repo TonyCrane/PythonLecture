@@ -17,7 +17,7 @@ plugins:
 
 By @鹤翔万里（TonyCrane） {.text-intro}
 
-[:fa-github: Github](https://github.com/ksky521/nodeppt){.button.ghost}
+[:fa-github: Github](https://github.com/TonyCrane/PythonLecture){.button.ghost}
 
 <slide :class="size-60">
 
