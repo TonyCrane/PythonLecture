@@ -165,6 +165,20 @@ print("Hello world!")
     - pow(a, b, mod)：也是乘方，mod 可以省略，如果有 mod 则对结果取模，如果 mod 为 -1 则计算乘法逆元{.tobuild.fadeInUp}
     - 更多运算通过 math、numpy、scipy 等包来进行{.tobuild.fadeInUp}
 
+<slide :class="size-50">
+
+# 复数类型
+
+---
+
+- python 中内置了复数类型，1+2j 形式就表示一个复数，其中 j 即虚数单位 i{.tobuild.fadeIn}
+- 或者使用 complex(实部, 虚部) 形式定义复数{.tobuild.fadeIn}
+- 可以进行复数的加减乘除运算{.tobuild.fadeIn}
+- 属性与方法{.tobuild.pulse}
+    - c.real：实部{.tobuild.fadeInUp}
+    - c.imag：虚部{.tobuild.fadeInUp}
+    - c.conjugate()：返回共轭复数{.tobuild.fadeInUp}
+
 <slide :class="size-60">
 
 # 字符串
@@ -229,7 +243,7 @@ print("Hello world!")
 
 -----
 
-# 注释
+# 注释{.tobuild.fadeIn}
 
 ---
 
@@ -906,6 +920,7 @@ print(obj._A__a) # 3
 - obj[...] 调用 obj.\_\_getitem\_\_(...){.tobuild.fadeInUp}
 - a in obj 调用 obj.\_\_contains\_\_(a){.tobuild.fadeInUp}
 - bool(obj) 调用 obj.\_\_bool\_\_(){.tobuild.fadeInUp}
+- 函数的调用本质上是调用 func.\_\_call\_\_(){.tobuild.fadeInUp}
 - a + b 调用 a.\_\_add\_\_(b){.tobuild.fadeInUp}
 - ......{.tobuild.fadeInUp}
 
@@ -937,45 +952,299 @@ print(obj._A__a) # 3
 - 垃圾回收……{.tobuild.fadeInUp}
 - .......{.tobuild.fadeInUp}
 
-<slide :class="size-60">
+<slide :class="size-70">
 
+
+:::{.content-left}
 # 文件操作
 
 ---
 
-TODO
+- open 函数，传入文件名、打开模式{.tobuild.fadeIn}
+- 打开模式（可以叠加）：r 读（默认）、w 写、x 创建并写、a 写在末尾、b 字节模式、t 文本模式（默认）{.tobuild.fadeIn}
+- 读取{.tobuild.pulse}
+    - 文本模式建议加上 encoding，不然容易报错{.tobuild.fadeInUp}
+    - f.read() 读取全部内容（字节模式得到字节序列）{.tobuild.fadeInUp}
+    - f.readline() 读取一行{.tobuild.fadeInUp}
+    - f.readlines() 读取所有行，返回一个列表{.tobuild.fadeInUp}
+- 写入{.tobuild.pulse}
+    - 文本模式同样建议加上 encoding{.tobuild.fadeInUp}
+    - f.write(...) 直接写入{.tobuild.fadeInUp}
+    - f.writelines(...) 传入列表，元素间换行写入{.tobuild.fadeInUp}
+- 通过这种形式操作文件记得用完后要 f.close(){.tobuild.fadeIn}
+
+:::
+
+:::{.content-right}
+```python {.small-code}
+f = open("filename", "r", encoding="utf-8")
+s = f.read()            # a str
+# line = f.readline()   # a str
+# lines = f.readlines() # a list
+...
+f.close()
+
+f = open("filename", "w", encodeing="utf-8")
+f.write("...")
+f.writelines(["...", "..."])
+...
+f.close()
+```
+
+<slide :class="size-70">
+
+:::{.content-left}
+
+# with 块
+
+---
+
+- with ... as ...\: 开启一个上下文管理器{.tobuild.fadeIn}
+- 常用在文件 open 上{.tobuild.fadeIn}
+    - with 块开始自动打开
+    - with 块结束自动结束
+- with 块结束后变量仍会留存{.tobuild.fadeIn}
+
+:::
+
+:::{.content-right}
+```python {.small-code}
+with open("file", "r", encoding="utf-8") as f:
+    s = f.read()
+    ...
+
+print(f.closed)  # True
+```
 
 <slide :class="size-60">
+
+:::{.content-left}
 
 # 异常与处理
 
 ---
 
-TODO
+- 产生错误 -> 抛出异常 -> 程序结束{.tobuild.fadeIn}
+- raise 关键字抛出异常{.tobuild.fadeIn}
+- try-except 块捕获异常{.tobuild.fadeIn}
+    - 可以有多个 except、不可以没有{.tobuild.fadeInUp}
+    - except 后接异常类（没有则捕获所有）{.tobuild.fadeInUp}
+    - as 字句存下异常{.tobuild.fadeInUp}
+- finally 语句{.tobuild.fadeIn}
+    - 不管是否有异常都会运行
+
+:::
+
+:::{.content-right}
+```python
+raise ...
+raise RuntimeError("...")
+
+try:
+    input(">>> ")
+except KeyboardInterrupt:
+    print("Good bye")
+
+try:
+    print(1 / 0)
+except ZeroDivisionError as e:
+    print("can't devide by zero")
+    raise e
+finally:
+    print("finished")
+```
 
 <slide :class="size-60">
 
-# 模块结构与导入
+:::{.content-left}
+
+# if 外的 else 语句 {.small-h1}
 
 ---
 
-TODO
+- else 块不仅仅跟着 if 才能使用{.tobuild.fadeIn}
+- for-else{.tobuild.fadeIn}
+    - for 循环结束才会运行
+    - for 循环被 break 了不会运行
+- while-else{.tobuild.fadeIn}
+    - condition 不成立退出才会运行
+    - 循环被 break 终止了不会运行
+- try-else{.tobuild.fadeIn}
+    - try 块中没有异常出现才会运行
+    - else 块中异常不会被前面的 except 捕获
+- 程序流跳到块外了不会运行（return 等）{.tobuild.fadeIn}
+
+:::
+
+:::{.content-right}
+```python
+for value in lst:
+    ...
+else:
+    ...
+
+while condition:
+    ...
+else:
+    ...
+
+try:
+    ...
+except ...:
+    ...
+else:
+    ...
+```
+
 
 <slide :class="size-60">
 
-# 外部模块安装与导入
+:::{.content-left}
+
+# 模块与导入
 
 ---
 
-TODO
+- 模块可以是一个单独的 .py 文件，也可以是一个文件夹{.tobuild.fadeIn}
+    - 文件夹相当于导入其下 \_\_init\_\_.py 文件
+- 模块中正常编写函数、类、语句{.tobuild.fadeIn}
+- 通过 import 语句导入模块{.tobuild.fadeIn}
+    - import code{.tobuild.fadeInUp}
+    - import code as cd{.tobuild.fadeInUp}
+    - from code import ...{.tobuild.fadeInUp}
+    - from code import *{.tobuild.fadeInUp}
+- 导入时相当于运行了一遍导入的代码{.tobuild.fadeIn}
+
+:::
+
+:::{.content-right}
+```python
+# code.py
+print("hello")
+def f():
+    print("call func in code.py")
+...
+```
+```python
+import code # hello
+code.f()
+import code as cd # hello
+cd.f()
+from code import f # hello
+f()
+from code import * # hello
+f()
+```
 
 <slide :class="size-60">
 
-# 类型标注
+:::{.content-left}
+
+# ”main 函数“
 
 ---
 
-TODO
+- 防止导入时运行代码{.tobuild.fadeIn}
+- 只允许直接运行脚本时运行{.tobuild.fadeIn}
+- 通过判断 \_\_name\_\_{.tobuild.fadeIn}
+    - 如果是直接运行，则其等于字符串 \_\_main\_\_
+    - 如果是被导入的，则其等于模块名
+
+:::
+
+:::{.content-right}
+```python
+# code.py
+...
+if __name__ == "__main__":
+    print("hello")
+else:
+    print(__name__)
+```
+```python
+import code # code
+```
+```bash
+$ python code.py # hello
+```
+
+<slide :class="size-60">
+
+# 内部模块
+
+---
+
+* python 自带了很多实用的模块（标准库）
+
+- os、sys：系统操作
+- math：数学运算
+- re：正则表达式
+- datetime：日期与时间
+- subprocess：子进程管理
+- argparse：命令行参数解析
+- logging：日志记录
+- hashlib：哈希计算
+- random：随机数
+- csv、json：数据格式解析
+- collections：更多类型
+- ...
+    {.text-cols.build}
+
+* 看文档：[docs.python.org/zh-cn/3/library](https://docs.python.org/zh-cn/3/library/index.html) {.tobuild.fadeInUp}
+
+<slide :class="size-60">
+
+# 外部模块安装
+
+---
+
+- pypi.org 上有极多别人写好了可以用的模块{.tobuild.fadeIn}
+    - numpy 矩阵等科学计算、scipy 科学计算、matplotlib 作图……
+- 使用 pip 安装（pip / python -m pip）{.tobuild.pulse}
+    - pip install pkg_name{.tobuild.fadeInUp}
+    - pip install pkg_name=... 指定版本{.tobuild.fadeInUp}
+    - pip install -r requirements.txt 安装 txt 文件中的所有包{.tobuild.fadeInUp}
+    - pip install ... -i [https\://pypi.tuna.tsinghua.edu.cn/simple](https://pypi.tuna.tsinghua.edu.cn/simple) 换源{.tobuild.fadeInUp}
+    - pip list、pip show 命令查看安装的所有包/某个包的信息{.tobuild.fadeInUp}
+    - pip uninstall pkg_name 卸载包{.tobuild.fadeInUp}
+- pip 安装本地模块{.tobuild.pulse}
+    - 目录下需要包含 setup.py / pyproject.toml{.tobuild.fadeInUp}
+    - pip install . 安装本地模块（复制到 site-packages 中）{.tobuild.fadeInUp}
+    - pip install -e . 可修改形式安装本地模块（在当前位置，可以直接修改代码）{.tobuild.fadeInUp}
+
+<slide :class="size-60">
+
+:::{.content-left}
+
+# 文档字符串
+
+---
+
+- 模块开头的三引号字符串{.tobuild.fadeIn}
+- 类、函数定义下面的三引号字符串{.tobuild.fadeIn}
+- help(...) 的时候可以显示{.tobuild.fadeIn}
+- obj.\_\_doc\_\_ 表示这串字符串{.tobuild.fadeIn}
+- 编辑器用来提示{.tobuild.fadeIn}
+- 一些文档生成工具（sphinx 等）从中获取文档{.tobuild.fadeIn}
+
+:::
+
+:::{.content-right}
+```python
+"""
+docstring for module
+"""
+
+def func(...):
+    """docstring for function"""
+    ...
+
+class A():
+    """docstring for class"""
+    def __init__(self, ...):
+        """docstring for method"""
+        ...
+```
 
 <slide :class="size-60">
 
@@ -983,7 +1252,14 @@ TODO
 
 ---
 
-TODO
+- PEP：Python Enhancement Proposals：[peps.python.org](https://peps.python.org) {.tobuild.fadeIn}
+- PEP 8 规范，给出了推荐使用的 python 代码风格规范{.tobuild.fadeIn}
+    - [peps.python.org/pep-0008](https://peps.python.org/pep-0008/)
+    - [pep8.org](https://pep8.org/)
+- 更细致的代码风格{.tobuild.fadeIn}
+    - black [github.com/psf/black](https://github.com/psf/black) {.tobuild.fadeInUp}
+    - flake8 [flake8.pycqa.org](https://flake8.pycqa.org/en/latest/) {.tobuild.fadeInUp}
+    - ...{.tobuild.fadeInUp}
 
 <slide :class="size-60">
 
@@ -991,12 +1267,22 @@ TODO
 
 ---
 
-TODO
+- 基础{.tobuild.pulse}
+    - 《Python 编程：从入门到实践》[ISBN 978-7-115-54608-1](https://www.ituring.com.cn/book/2784) {.tobuild.fadeInUp}
+    - Python 3 菜鸟教程 [runoob.com/python3/python3-tutorial.html](https://www.runoob.com/python3/python3-tutorial.html) {.tobuild.fadeInUp}
+    - Python 官方文档 tutorial [docs.python.org/3/tutorial](https://docs.python.org/3/tutorial/index.html) {.tobuild.fadeInUp}
+    - 中国大学 mooc - 浙江大学 [Python 程序设计](https://www.icourse163.org/course/ZJU-1206456840) {.tobuild.fadeInUp}
+- 进阶{.tobuild.pulse}
+    - 《流畅的 Python》[ISBN 978-7-115-45415-7](https://www.ituring.com.cn/book/1564) {.tobuild.fadeInUp}
+    - Python 官方文档 [docs.python.org/3](https://docs.python.org/3/) {.tobuild.fadeInUp}
+    - 学一些实用的第三方库，看文档{.tobuild.fadeInUp}
+    - PEP [peps.python.org](https://peps.python.org/pep-0000/)（注意分清有没有实施）{.tobuild.fadeInUp}
+    - GitHub 找项目读{.tobuild.fadeInUp}
 
 <slide :class="size-60 aligncenter">
 
-# 结
+# 结{.text-shadow}
 
 ---
 
-TODO
+Thanks for watching{.text-landing}
