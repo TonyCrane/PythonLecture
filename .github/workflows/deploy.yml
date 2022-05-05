@@ -11,12 +11,12 @@ jobs:
     - name: Checkout
       uses: actions/checkout@master
     
-    - name: Push update file to manim_document_zh
+    - name: Push update file to slides repo
       uses: dmnemec/copy_file_to_another_repo_action@3fe42250d47e0764da9de9939b151b09a26e5857
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_file: 'docs/'
+        source_file: 'docs/.'
         destination_repo: 'TonyCrane/slides'
         destination_branch: 'master'
         destination_folder: 'PythonLecture'
