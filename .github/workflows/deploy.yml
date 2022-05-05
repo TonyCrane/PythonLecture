@@ -1,0 +1,24 @@
+name: Deploy to slides repo
+
+on: push
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    name: copy docs folder to slides repo
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    
+    - name: Push update file to manim_document_zh
+      uses: dmnemec/copy_file_to_another_repo_action@3fe42250d47e0764da9de9939b151b09a26e5857
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_file: 'docs/'
+        destination_repo: 'TonyCrane/slides'
+        destination_branch: 'master'
+        destination_folder: 'PythonLecture'
+        user_email: 'tonycrane@foxmail.com'
+        user_name: 'TonyCrane'
