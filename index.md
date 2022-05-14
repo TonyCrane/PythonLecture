@@ -18,6 +18,7 @@ plugins:
 By @鹤翔万里（TonyCrane） {.text-intro}
 
 [:fa-github: Github](https://github.com/TonyCrane/PythonLecture){.button.ghost}
+[B 站直播间](http://live.bilibili.com/11896070){.button.ghost.pink-button}
 
 <div id="countdown" style="font-size: 3em">00\:00\:00\:00</div>
 

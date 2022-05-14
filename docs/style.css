@@ -25,3 +25,6 @@ h1.small-h1 {
 .big-title {
     font-size: 3.5em;
 }
+.pink-button, .pink-button:hover {
+    border-color: #FF94B1;
+}
