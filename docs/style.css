@@ -22,3 +22,6 @@ code[class*=small-code] {
 h1.small-h1 {
     font-size: 5.5rem;
 }
+.big-title {
+    font-size: 3.5em;
+}

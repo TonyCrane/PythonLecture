@@ -11,13 +11,31 @@ plugins:
 <slide :class="aligncenter size-70">
 <link rel="stylesheet" href="style.css">
 
-# Python 基础教学 {.text-shadow}
+# Python 基础教学 {.text-shadow.big-title}
 
 ---
 
 By @鹤翔万里（TonyCrane） {.text-intro}
 
 [:fa-github: Github](https://github.com/TonyCrane/PythonLecture){.button.ghost}
+
+<div id="countdown" style="font-size: 3em">00\:00\:00\:00</div>
+
+<script>
+    setInterval(function () {
+        var now = new Date(), end = new Date(2022, 4, 21, 18, 00, 00);
+        var left = end.getTime() - now.getTime();
+        var leftd = Math.floor(left/(1000*60*60*24));
+        var lefth = Math.floor(left/(1000*60*60)%24);
+        var leftm = Math.floor(left/(1000*60)%60);
+        var lefts = Math.floor(left/1000%60);
+        document.getElementById("countdown").innerHTML = 
+            leftd.toString().padStart(2, '0') + ':' + 
+            lefth.toString().padStart(2, '0') + ':' + 
+            leftm.toString().padStart(2, '0') + ':' + 
+            lefts.toString().padStart(2, '0')
+    }, 1000)
+</script>
 
 <slide :class="size-60">
 
@@ -1267,6 +1285,7 @@ class A():
 
 ---
 
+- 加群：[995146332](https://jq.qq.com/?_wv=1027&k=kaVgMwA3) {.tobuild.pulse}
 - 基础{.tobuild.pulse}
     - 《Python 编程：从入门到实践》[ISBN 978-7-115-54608-1](https://www.ituring.com.cn/book/2784) {.tobuild.fadeInUp}
     - Python 3 菜鸟教程 [runoob.com/python3/python3-tutorial.html](https://www.runoob.com/python3/python3-tutorial.html) {.tobuild.fadeInUp}
