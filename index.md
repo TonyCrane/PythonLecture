@@ -2,8 +2,8 @@ title: Python 基础教学
 speaker: TonyCrane
 css: 
     - https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&family=Source+Code+Pro&family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400;1,700
-    - https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
-    - https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
+    - https://fastly.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
+    - https://fastly.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
     - style.css
 plugins:
     - echarts
@@ -26,6 +26,10 @@ By @鹤翔万里（TonyCrane） {.text-intro}
     setInterval(function () {
         var now = new Date(), end = new Date(2022, 4, 21, 18, 00, 00);
         var left = end.getTime() - now.getTime();
+        if (left < 0) {
+            document.getElementById("countdown").innerHTML = "";
+            return;
+        }
         var leftd = Math.floor(left/(1000*60*60*24));
         var lefth = Math.floor(left/(1000*60*60)%24);
         var leftm = Math.floor(left/(1000*60)%60);
@@ -48,7 +52,7 @@ By @鹤翔万里（TonyCrane） {.text-intro}
 - 这里说的东西有些只是为了更好的理解，可能并不严谨，请不要完全听信（~~免责声明~~
 {.description}
 
-<slide :class="size-60">
+<slide :class="size-50">
 
 # 为什么讲 python
 
@@ -173,7 +177,7 @@ print("Hello world!")
 - 1 是整数，1. 是浮点数{.tobuild.pulse}
 - 整数与浮点数转换{.tobuild.pulse}
     - int(...)：向 0 舍入{.tobuild.fadeInUp}
-    - round(...)：修约（四舍六入五凑偶，可以当成四舍五入）{.tobuild.fadeInUp}
+    - round(...)：向偶舍入（四舍六入五凑偶，可以当成四舍五入）{.tobuild.fadeInUp}
     - math.floor(...)、math.ceil(...)：下取整、上取整（需要 import math）{.tobuild.fadeInUp}
 - 运算{.tobuild.pulse}
     - \+ \- \* 加减乘，左右都是整数结果也是整数，有浮点数结果就是浮点数{.tobuild.fadeInUp}
@@ -287,7 +291,7 @@ print("Hello world!")
     - lst[a\:b\:c]：从 lst[a] 到 lst[b-1] 每 c 个（即步长）取一个形成的列表
     - c 可以是负数，此时需要 a > b 才能获取到值
     - 有步长时若省略 a、b 记得不要省略冒号，例 lst[\:\:-1] 表示列表倒序
-    {.tobuild.fadeIn}
+    {.build.fadeIn}
 
 <slide :class="size-60">
 
