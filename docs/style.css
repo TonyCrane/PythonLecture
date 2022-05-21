@@ -31,7 +31,7 @@ h1.small-h1 {
 
 
 /****************** dark theme ******************/
-body {
+/* body {
     background-color: #1D1D1D;
     color: #FFFFFFE6;
 }
@@ -52,4 +52,4 @@ code, [class*='bg-'] pre {
 }
 .text-shadow {
     text-shadow: 0 0 40px rgb(204 204 204 / 50%);
-}
+} */

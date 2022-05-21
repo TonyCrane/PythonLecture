@@ -7,7 +7,6 @@ css:
     - style.css
 plugins:
     - echarts
-prismTheme: okaidia
 
 <slide :class="aligncenter size-70">
 <link rel="stylesheet" href="style.css">
@@ -21,27 +20,7 @@ By @鹤翔万里（TonyCrane） {.text-intro}
 [:fa-github: Github](https://github.com/TonyCrane/PythonLecture){.button.ghost}
 [B 站直播间](http://live.bilibili.com/11896070){.button.ghost.pink-button}
 
-<div id="countdown" style="font-size: 3em">00\:00\:00\:00</div>
-
-<script>
-    setInterval(function () {
-        var now = new Date(), end = new Date(2022, 4, 21, 18, 00, 00);
-        var left = end.getTime() - now.getTime();
-        if (left < 0) {
-            document.getElementById("countdown").innerHTML = "";
-            return;
-        }
-        var leftd = Math.floor(left/(1000*60*60*24));
-        var lefth = Math.floor(left/(1000*60*60)%24);
-        var leftm = Math.floor(left/(1000*60)%60);
-        var lefts = Math.floor(left/1000%60);
-        document.getElementById("countdown").innerHTML = 
-            leftd.toString().padStart(2, '0') + ':' + 
-            lefth.toString().padStart(2, '0') + ':' + 
-            leftm.toString().padStart(2, '0') + ':' + 
-            lefts.toString().padStart(2, '0')
-    }, 1000)
-</script>
+←/→ Space Home End 翻页
 
 <slide :class="size-60">
 
