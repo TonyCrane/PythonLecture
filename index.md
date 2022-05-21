@@ -7,6 +7,7 @@ css:
     - style.css
 plugins:
     - echarts
+prismTheme: okaidia
 
 <slide :class="aligncenter size-70">
 <link rel="stylesheet" href="style.css">

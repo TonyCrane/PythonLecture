@@ -28,3 +28,28 @@ h1.small-h1 {
 .pink-button, .pink-button:hover {
     border-color: #FF94B1;
 }
+
+
+/****************** dark theme ******************/
+body {
+    background-color: #1D1D1D;
+    color: #FFFFFFE6;
+}
+hr {
+    background-image: radial-gradient(at center center, rgba(220, 228, 255, 0.64) 0px, rgb(29, 29, 29) 75%);
+}
+.bg-white {
+    background-color: #333333;
+}
+a {
+    color: #4799FF;
+}
+code, [class*='bg-'] pre {
+    background-color: #1D1D1D;
+}
+.language-css .token.string, .style .token.string, .token.entity, .token.operator, .token.url {
+    background: none;
+}
+.text-shadow {
+    text-shadow: 0 0 40px rgb(204 204 204 / 50%);
+}
