@@ -5,7 +5,7 @@ Slide, notebook and code of TonyCrane's Python Lecture on BiliBili.
 - slide: https://slides.tonycrane.cc/PythonLecture
     - pdf: [slide_light.pdf](https://github.com/TonyCrane/PythonLecture/blob/master/slide_light.pdf) [slide_dark.pdf](https://github.com/TonyCrane/PythonLecture/blob/master/slide_dark.pdf)
 - notebook: [main.ipynb](https://github.com/TonyCrane/PythonLecture/blob/master/main.ipynb)
-- record: to be uploaded on bilibili
+- record: https://www.bilibili.com/video/BV13Z4y1h7x5/
 
 ## View this slide
 

@@ -18,7 +18,7 @@ plugins:
 By @鹤翔万里（TonyCrane） {.text-intro}
 
 [:fa-github: Github](https://github.com/TonyCrane/PythonLecture){.button.ghost}
-[B 站直播间](http://live.bilibili.com/11896070){.button.ghost.pink-button}
+[直播回放](https://www.bilibili.com/video/BV13Z4y1h7x5/){.button.ghost.pink-button}
 
 ←/→ Space Home End 翻页
 
