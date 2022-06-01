@@ -2,8 +2,8 @@ title: Python 基础教学
 speaker: TonyCrane
 css: 
     - https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&family=Source+Code+Pro&family=JetBrains+Mono:ital,wght@0,300;0,400;0,600;0,700;1,400;1,700
-    - https://fastly.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
-    - https://fastly.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
+    - https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
+    - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
     - style.css
 plugins:
     - echarts
